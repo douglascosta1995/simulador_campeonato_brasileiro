@@ -1,3 +1,23 @@
 # simulador_campeonato_brasileiro
+(em progresso ...)
 
-Este simulador foi desenvolvido para quem gosta de acompanhar ligas de futebol e gosta de simular pontuações de partidas e ver como elas afetam a posição das equipes. Neste jogo, o usuário pode selecionar 20 times e iniciar uma nova liga, após isso, o usuário dá um nome à liga e então é possível ir para a simulação da primeira rodada. A liga segue o padrão do torneio Double round-robin, o que significa que a liga é composta por 20 equipes, e elas se enfrentarão duas vezes (em casa e fora), resultando em 38 rodadas. As pontuações em cada rodada serão geradas aleatoriamente e não será possível regenerar outras pontuações na rodada atual, então o usuário não pode “enganar” a favor de seu time favorito. Após a primeira rodada, a informação das pontuações será armazenada onde, uma VITÓRIA dá 3 pontos à equipe vencedora, um EMPATE dá 1 ponto às duas equipes e uma PERDA não dá nenhum ponto. Com essas informações, será gerada uma tabela permanente. A ordem das equipes na tabela permanente seguirá a prioridade de: 1-Mais pontos / 2-Mais vitórias / 3-Mais GD (saldo de gols) / 4-Mais GF (gols por). Em caso de equipe com todas as características mencionadas iguais, o critério de desempate será por ordem alfabética. Após cada rodada, a tabela permanente mudará de acordo com as pontuações, e o usuário poderá consultá-la após cada rodada simulada. A equipe que terminar em 1º lugar na tabela permanente após as 38 rodadas é a vencedora.
+Este simulador será desenvolvido para quem gosta de simular pontuações de partidas e ver como elas afetam a posição dos times em um campeonato. 
+Neste jogo, o usuário pode selecionar 20 times da série A ou série B do campeonato brasileiro.
+
+O campeonato é composto por 20 times, e eles se enfrentarão duas vezes (em casa e fora), resultando em 38 rodadas. 
+
+Os placares em cada rodada serão gerados aleatoriamente e não será possível gerar outros placares na rodada atual.
+
+Após a primeira rodada, a informação das pontuações será armazenada onde:
+    VITÓRIA = 3 pontos à equipe vencedora, EMPATE = 1 ponto às duas equipes e uma DERROTA não dá nenhum ponto. 
+    
+Com essas informações, será gerada uma tabela de classificação. 
+
+A ordem das equipes na tabela de classificação seguirá a prioridade de: 
+    1 - Mais pontos / 2 - Mais vitórias / 3 - Mais saldo de gols / 4 - Mais gols feitos. 
+
+Em caso de times com todos os critérios mencionados iguais, o critério de desempate será por ordem alfabética. 
+
+Após cada rodada, a tabela de classificação mudará de acordo com as pontuações, e o usuário poderá consultá-la após cada rodada simulada. 
+
+O time que terminar em 1º lugar na tabela de classificação após as 38 rodadas é a vencedora.
