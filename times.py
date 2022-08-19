@@ -35,7 +35,8 @@ class Time(object):
                 }
         #print(times_e_informacoes)
         iniciar_campeonato = campeonato.Campeonato(times_e_informacoes)
-        iniciar_campeonato.informacao_dos_times()
+        #iniciar_campeonato.informacao_dos_times()
+        iniciar_campeonato.rodadas()
 '''
 if __name__ == "__main__":
 
