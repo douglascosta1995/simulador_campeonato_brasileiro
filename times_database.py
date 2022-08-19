@@ -4,6 +4,7 @@ times = {
     'América Mineiro': [1, 2],
     'Atlético-PR': [1, 4],
     'Atlético-GO': [1, 3],
+    'Atlético-MG': [1, 4],
     'Avaí':[1, 2],
     'Bahia': [2, 5],
     'Botafogo': [1, 3],
