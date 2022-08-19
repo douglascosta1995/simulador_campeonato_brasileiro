@@ -1,6 +1,7 @@
 # Talvez seja melhor transformar isso em um json file
 # Aqui deve conter as informacões necessárias de cada time selecionado para o campeonato
 # Estas informações devem ser o suficiente para montar a tabela de classificação
+import campeonato
 
 class Time(object):
     def __init__(self, lista_de_times):
@@ -32,8 +33,9 @@ class Time(object):
                     'gols_contra': self.gols_contra,
                     'saldo_de_gols': self.saldo_de_gols
                 }
-
-        print(times_e_informacoes)
+        #print(times_e_informacoes)
+        iniciar_campeonato = campeonato.Campeonato(times_e_informacoes)
+        iniciar_campeonato.informacao_dos_times()
 '''
 if __name__ == "__main__":
 

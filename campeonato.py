@@ -4,11 +4,14 @@
 # A cada rodada o times serão atualizados com as informações adquiridas após a rodada
 # Ao fim de cada rodada, será mostrada a tabela de classificação
 class Campeonato(object):
-    def __init__(self):
+    def __init__(self, info_times_inicial):
+        self.info_times_inicial = info_times_inicial
         pass
 
     def informacao_dos_times(self):
-        pass
+        # self.info_times_inicial['América Mineiro']['pontos'] += 1
+
+        print(self.info_times_inicial)
 
     def rodadas(self):
         pass
