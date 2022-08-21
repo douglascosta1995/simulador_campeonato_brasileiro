@@ -24,25 +24,18 @@ class Campeonato(object):
     def rodadas(self):
         key = list(self.info_times)
         # colocar in a loop pra simular as rodadas
-        resultado = Simulador_de_Partidas(key[0], key[1]).simular()
-        Campeonato.informacao_dos_times(self, key[0], resultado[0], resultado[1], resultado[2], resultado[3], resultado[4],
-                                        resultado[5], resultado[6])
-        Campeonato.informacao_dos_times(self, key[1], resultado[7], resultado[8], resultado[9], resultado[10], resultado[11],
-                                        resultado[12], resultado[13])
+        for i in range(0, 10):
+            resultado = Simulador_de_Partidas(key[i], key[19-i]).simular()
+            Campeonato.informacao_dos_times(self, key[i], resultado[0], resultado[1], resultado[2], resultado[3], resultado[4],
+                                            resultado[5], resultado[6])
+            Campeonato.informacao_dos_times(self, key[19-i], resultado[7], resultado[8], resultado[9], resultado[10], resultado[11],
+                                            resultado[12], resultado[13])
 
         print(self.info_times)
+        #x = {'a': 2, 'dd': 4, 'efef': 3, 'egge': 1, 'rrr': 0}
+        sorted_x = sorted(self.info_times, key=lambda x: (self.info_times[x]['pontos'], self.info_times[x]['vitorias'], self.info_times[x]['saldo_de_gols'], self.info_times[x]['gols_pro']), reverse=True)
+        print(sorted_x)
         # criar tabela de classificação
-
-        '''
-        for i in range(0, 10):
-            name = key[i]
-            resultado = Simulador_de_Partidas(key[i], key[i+1]).simular()
-            #print (f'Vasco ganhou {resultado[0]} e Flamengo ganhou {resultado[1]}')
-            #resultado = Simulador_de_Partidas("Fluminense", "Santos").simular()
-            #print (f'Fluminense ganhou {resultado[0]} e Santos ganhou {resultado[1]}')
-            print(list(resultado))
-            #Campeonato.informacao_dos_times(name, resultado)
-        '''
 
     def criar_tabela_de_classificacao(self):
         pass
