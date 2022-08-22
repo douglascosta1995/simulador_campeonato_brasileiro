@@ -20,4 +20,4 @@ Em caso de times com todos os critérios mencionados iguais, o critério de dese
 
 Após cada rodada, a tabela de classificação mudará de acordo com as pontuações, e o usuário poderá consultá-la após cada rodada simulada. 
 
-O time que terminar em 1º lugar na tabela de classificação após as 38 rodadas é a vencedora.
+O time que terminar em 1º lugar na tabela de classificação após as 38 rodadas é o vencedor.
