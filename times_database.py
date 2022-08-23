@@ -42,7 +42,3 @@ times = {
     'Vasco': [2, 5],
     'Vila Nova': [2, 1]
 }
-
-#print(times['Vasco'])
-
-# times.update({'Vasco': [1, 3]})

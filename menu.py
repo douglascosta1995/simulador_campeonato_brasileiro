@@ -5,7 +5,7 @@ class Menu(object):
     def __init__(self, serie_campeonato):
         self.serie_campeonato = serie_campeonato
         self.times_selecionados = []
-        self.titulo = "A" if int(serie_campeonato) == 1 else "B"
+        self.titulo = "A" if serie_campeonato == 1 else "B"
 
     def menu_inicial(self):
         print(f'A série selecionada é série {self.titulo}')
@@ -22,10 +22,10 @@ if __name__ == "__main__":
     print("Seja bem vindo ao Campeonato")
     resposta_incorreta = True
     while resposta_incorreta:
-        serie = input("Escolha qual série do campeonato você quer jogar. Digite '1' para Série A, "
-                              "'2' para Série B: ")
         try:
-            if int(serie) == 1 or int(serie) == 2:
+            serie = int(input("Escolha qual série do campeonato você quer jogar. Digite '1' para Série A, "
+                              "'2' para Série B: "))
+            if serie == 1 or serie == 2:
                 resposta_incorreta = False
                 jogo = Menu(serie)
                 jogo.menu_inicial()

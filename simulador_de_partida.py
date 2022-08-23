@@ -67,9 +67,3 @@ class Simulador_de_Partidas(object):
                vitorias_time_B, empates_time_B, derrotas_time_B, gols_pro_time_B, gols_contra_time_B, \
                saldo_de_gols_time_B
 
-
-'''
-if __name__ == "__main__":
-    simular = Simulador_de_Partidas("Vasco", "Flamengo")
-    simular.simular()
-'''

@@ -10,7 +10,6 @@ from tabela import Tabela
 class Campeonato(object):
     def __init__(self, info_times_inicial):
         self.info_times = info_times_inicial
-        pass
 
     def informacao_dos_times(self, time, pontos, vitorias, empates, derrotas, gp, gc, sg):
         self.info_times[time]['pontos'] += pontos
@@ -21,8 +20,6 @@ class Campeonato(object):
         self.info_times[time]['gols_pro'] += gp
         self.info_times[time]['gols_contra'] += gc
         self.info_times[time]['saldo_de_gols'] += sg
-
-        #print(self.info_times_inicial)
 
     def rodadas(self):
         key = list(self.info_times)

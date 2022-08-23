@@ -15,7 +15,6 @@ class Time(object):
         self.gols_contra = 0
         self.saldo_de_gols = 0
 
-
     def imprimir_time(self):
         for time in self.lista_de_times:
             print(time)
@@ -33,13 +32,7 @@ class Time(object):
                     'gols_contra': self.gols_contra,
                     'saldo_de_gols': self.saldo_de_gols
                 }
-        #print(times_e_informacoes)
-        iniciar_campeonato = campeonato.Campeonato(times_e_informacoes)
-        #iniciar_campeonato.informacao_dos_times()
-        iniciar_campeonato.rodadas()
-'''
-if __name__ == "__main__":
 
-    jogo = Time([])
-    jogo.criar_dictionary_de_times()
-'''
+        iniciar_campeonato = campeonato.Campeonato(times_e_informacoes)
+        iniciar_campeonato.rodadas()
+
