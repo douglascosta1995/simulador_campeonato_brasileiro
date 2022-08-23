@@ -12,13 +12,14 @@ class Tabela(object):
         print(sorted_time)
         print("TABELA DE CLASSIFICAÇÃO")
         # Formatar tabela depois
-        print("Time     P   J   V   E   D   GP    GC    SG ")
+        print('%-20s%-5s%-5s%-5s%-5s%-5s%-5s%-5s%-5s' % ('Time', 'P', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'))
+
         for time in sorted_time:
-            print(f"{time} :    {self.info_times[time]['pontos']}   "
-                  f"{self.info_times[time]['jogos']}   "
-                  f"{self.info_times[time]['vitorias']}   "
-                  f"{self.info_times[time]['empates']}   "
-                  f"{self.info_times[time]['derrotas']}   "
-                  f"{self.info_times[time]['gols_pro']}   "
-                  f"{self.info_times[time]['gols_contra']}   "
-                  f"{self.info_times[time]['saldo_de_gols']}   ")
+            print('%-20s%-5s%-5s%-5s%-5s%-5s%-5s%-5s%-5s' % (time, self.info_times[time]['pontos'],
+                                     self.info_times[time]['jogos'],
+                                     self.info_times[time]['vitorias'],
+                                     self.info_times[time]['empates'],
+                                     self.info_times[time]['derrotas'],
+                                     self.info_times[time]['gols_pro'],
+                                     self.info_times[time]['gols_contra'],
+                                     self.info_times[time]['saldo_de_gols']))
