@@ -4,6 +4,8 @@
 # A cada rodada o times serão atualizados com as informações adquiridas após a rodada
 # Ao fim de cada rodada, será mostrada a tabela de classificação
 from simulador_de_partida import Simulador_de_Partidas
+from tabela import Tabela
+
 
 class Campeonato(object):
     def __init__(self, info_times_inicial):
@@ -12,6 +14,7 @@ class Campeonato(object):
 
     def informacao_dos_times(self, time, pontos, vitorias, empates, derrotas, gp, gc, sg):
         self.info_times[time]['pontos'] += pontos
+        self.info_times[time]['jogos'] += 1
         self.info_times[time]['vitorias'] += vitorias
         self.info_times[time]['empates'] += empates
         self.info_times[time]['derrotas'] += derrotas
@@ -24,6 +27,7 @@ class Campeonato(object):
     def rodadas(self):
         key = list(self.info_times)
         # colocar in a loop pra simular as rodadas
+        # Testar primeira rodada
         for i in range(0, 10):
             resultado = Simulador_de_Partidas(key[i], key[19-i]).simular()
             Campeonato.informacao_dos_times(self, key[i], resultado[0], resultado[1], resultado[2], resultado[3], resultado[4],
@@ -31,11 +35,8 @@ class Campeonato(object):
             Campeonato.informacao_dos_times(self, key[19-i], resultado[7], resultado[8], resultado[9], resultado[10], resultado[11],
                                             resultado[12], resultado[13])
 
-        print(self.info_times)
-        #x = {'a': 2, 'dd': 4, 'efef': 3, 'egge': 1, 'rrr': 0}
-        sorted_x = sorted(self.info_times, key=lambda x: (self.info_times[x]['pontos'], self.info_times[x]['vitorias'], self.info_times[x]['saldo_de_gols'], self.info_times[x]['gols_pro']), reverse=True)
-        print(sorted_x)
         # criar tabela de classificação
+        Campeonato.criar_tabela_de_classificacao(self)
 
     def criar_tabela_de_classificacao(self):
-        pass
+        Tabela(self.info_times).imprimir_tabela()
