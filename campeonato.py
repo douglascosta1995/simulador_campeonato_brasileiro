@@ -6,6 +6,21 @@
 from simulador_de_partida import Simulador_de_Partidas
 from tabela import Tabela
 
+# criar um dictionary com as informaçoes das rodadas de cada time
+# 1 x 20; 19 x 1 ....
+relacao_de_times_e_rodadas = {
+    '1': [0, 19],
+    '2': [1, 18],
+    '3': [2, 17],
+    '4': [3, 16],
+    '5': [4, 15],
+    '6': [5, 14],
+    '7': [6, 13],
+    '8': [7, 12],
+    '9': [8, 11],
+    '10': [9, 10]
+}
+
 
 class Campeonato(object):
     def __init__(self, info_times_inicial):
@@ -22,18 +37,43 @@ class Campeonato(object):
         self.info_times[time]['saldo_de_gols'] += sg
 
     def rodadas(self):
-        key = list(self.info_times)
-        # colocar in a loop pra simular as rodadas
-        # Testar primeira rodada
-        for i in range(0, 10):
-            resultado = Simulador_de_Partidas(key[i], key[19-i]).simular()
-            Campeonato.informacao_dos_times(self, key[i], resultado[0], resultado[1], resultado[2], resultado[3], resultado[4],
+        key_list = list(self.info_times)
+        for i in range(0, 38):
+            print(f'rodada: {i + 1}')
+            if i % 2 == 0:
+                Campeonato.gerador_de_partidas_da_proxima_rodada(self)
+                # iterar sobre todos os valores do dictionary e simular as partidas da rodada atual
+                # [0, 19] significa time0 x time19
+                for value in relacao_de_times_e_rodadas.values():
+                    resultado = Simulador_de_Partidas(key_list[value[0]], key_list[value[1]]).simular()
+                    Campeonato.informacao_dos_times(self, key_list[value[0]], resultado[0], resultado[1], resultado[2], resultado[3],
+                                            resultado[4],
                                             resultado[5], resultado[6])
-            Campeonato.informacao_dos_times(self, key[19-i], resultado[7], resultado[8], resultado[9], resultado[10], resultado[11],
+                    Campeonato.informacao_dos_times(self, key_list[value[1]], resultado[7], resultado[8], resultado[9], resultado[10],
+                                            resultado[11],
                                             resultado[12], resultado[13])
+
+            else:
+                Campeonato.gerador_de_partidas_da_proxima_rodada(self)
+                for value in relacao_de_times_e_rodadas.values():
+                    resultado = Simulador_de_Partidas(key_list[value[1]], key_list[value[0]]).simular()
+                    Campeonato.informacao_dos_times(self, key_list[value[1]], resultado[0], resultado[1], resultado[2],
+                                                    resultado[3],
+                                                    resultado[4],
+                                                    resultado[5], resultado[6])
+                    Campeonato.informacao_dos_times(self, key_list[value[0]], resultado[7], resultado[8], resultado[9],
+                                                    resultado[10],
+                                                    resultado[11],
+                                                    resultado[12], resultado[13])
 
         # criar tabela de classificação
         Campeonato.criar_tabela_de_classificacao(self)
+
+
+    def gerador_de_partidas_da_proxima_rodada(self):
+        # aumentar a por 1 e diminuir b por 1
+        # checar se tem valor igual a zero e substituir por 19 (atualizar dictionary)
+        pass
 
     def criar_tabela_de_classificacao(self):
         Tabela(self.info_times).imprimir_tabela()
