@@ -40,8 +40,10 @@ class Campeonato(object):
         key_list = list(self.info_times)
         for i in range(0, 38):
             print(f'rodada: {i + 1}')
+            # garantir que os times joguem dentro e fora de casa
             if i % 2 == 0:
-                Campeonato.gerador_de_partidas_da_proxima_rodada(self)
+                # timeA x timeB
+                Campeonato.gerador_de_partidas_da_proxima_rodada(self, i)
                 # iterar sobre todos os valores do dictionary e simular as partidas da rodada atual
                 # [0, 19] significa time0 x time19
                 for value in relacao_de_times_e_rodadas.values():
@@ -54,7 +56,8 @@ class Campeonato(object):
                                             resultado[12], resultado[13])
 
             else:
-                Campeonato.gerador_de_partidas_da_proxima_rodada(self)
+                # timeB x timeA
+                Campeonato.gerador_de_partidas_da_proxima_rodada(self, i)
                 for value in relacao_de_times_e_rodadas.values():
                     resultado = Simulador_de_Partidas(key_list[value[1]], key_list[value[0]]).simular()
                     Campeonato.informacao_dos_times(self, key_list[value[1]], resultado[0], resultado[1], resultado[2],
@@ -65,15 +68,29 @@ class Campeonato(object):
                                                     resultado[10],
                                                     resultado[11],
                                                     resultado[12], resultado[13])
-
         # criar tabela de classificação
         Campeonato.criar_tabela_de_classificacao(self)
 
-
-    def gerador_de_partidas_da_proxima_rodada(self):
-        # aumentar a por 1 e diminuir b por 1
-        # checar se tem valor igual a zero e substituir por 19 (atualizar dictionary)
-        pass
+    def gerador_de_partidas_da_proxima_rodada(self, rodada):
+        # se for primeira rodada, manter como esta:
+        if int(rodada) == 0:
+            pass
+        else:
+            # diminuir val[0] e val[1] por 1
+            # checar se tem valor igual a zero e substituir por 19 (atualizar dictionary)
+            for key, val in relacao_de_times_e_rodadas.items():
+                if key == '1':
+                    val[1] -= 1
+                else:
+                    if val[0] == 1:
+                        val[0] = 19
+                        val[1] -= 1
+                    elif val[1] == 1:
+                        val[1] = 19
+                        val[0] -= 1
+                    else:
+                        val[0] -= 1
+                        val[1] -= 1
 
     def criar_tabela_de_classificacao(self):
         Tabela(self.info_times).imprimir_tabela()
