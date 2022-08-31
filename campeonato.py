@@ -40,6 +40,7 @@ class Campeonato(object):
         key_list = list(self.info_times)
         for i in range(0, 38):
             print(f'rodada: {i + 1}')
+            input(f'Pressione enter para simular jogos da rodada {i + 1}')
             # garantir que os times joguem dentro e fora de casa
             if i % 2 == 0:
                 # timeA x timeB
