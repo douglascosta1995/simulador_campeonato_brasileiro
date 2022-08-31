@@ -54,7 +54,6 @@ class Campeonato(object):
                     Campeonato.informacao_dos_times(self, key_list[value[1]], resultado[7], resultado[8], resultado[9], resultado[10],
                                             resultado[11],
                                             resultado[12], resultado[13])
-
             else:
                 # timeB x timeA
                 Campeonato.gerador_de_partidas_da_proxima_rodada(self, i)
@@ -68,8 +67,8 @@ class Campeonato(object):
                                                     resultado[10],
                                                     resultado[11],
                                                     resultado[12], resultado[13])
-        # criar tabela de classificação
-        Campeonato.criar_tabela_de_classificacao(self)
+            # criar tabela de classificação
+            Campeonato.criar_tabela_de_classificacao(self, i)
 
     def gerador_de_partidas_da_proxima_rodada(self, rodada):
         # se for primeira rodada, manter como esta:
@@ -92,5 +91,5 @@ class Campeonato(object):
                         val[0] -= 1
                         val[1] -= 1
 
-    def criar_tabela_de_classificacao(self):
-        Tabela(self.info_times).imprimir_tabela()
+    def criar_tabela_de_classificacao(self, rodada):
+        Tabela(self.info_times).imprimir_tabela(rodada)
