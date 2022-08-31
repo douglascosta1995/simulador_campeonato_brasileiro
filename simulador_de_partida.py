@@ -1,3 +1,4 @@
+from times_database import times
 import random
 
 
@@ -5,10 +6,12 @@ class Simulador_de_Partidas(object):
     def __init__(self, timeA, timeB):
         self.timeA = timeA
         self.timeB = timeB
+        self.forca_timeA = times[timeA][1]
+        self.forca_timeB = times[timeB][1]
 
     def simular(self):
-        random_number1 = random.randint(0, 4)
-        random_number2 = random.randint(0, 4)
+        random_number1 = (random.randint(0, 3) + 1) if self.forca_timeA > self.forca_timeB else random.randint(0, 4)
+        random_number2 = (random.randint(0, 3) + 1) if self.forca_timeB > self.forca_timeA else random.randint(0, 4)
         # imprimindo a partida com os placares gerados
         print(f'{self.timeA} {random_number1} x {random_number2} {self.timeB}')
 
