@@ -41,7 +41,7 @@ class Simulador_de_Partidas(object):
             pontos_time_B = 1
             vitorias_time_B = 0
             empates_time_B = 1
-            derrotas_time_B = 1
+            derrotas_time_B = 0
             gols_pro_time_B = random_number2
             gols_contra_time_B = random_number1
             saldo_de_gols_time_B = gols_pro_time_B - gols_contra_time_B
