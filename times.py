@@ -33,6 +33,4 @@ class Time(object):
                     'saldo_de_gols': self.saldo_de_gols
                 }
         input('Times selecionados. Pressione enter para iniciar o campeonato')
-        iniciar_campeonato = campeonato.Campeonato(times_e_informacoes)
-        iniciar_campeonato.rodadas()
-
+        campeonato.Campeonato(times_e_informacoes).rodadas()
