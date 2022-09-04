@@ -1,7 +1,6 @@
 from unittest import TestCase
 from times import Time
 from unittest.mock import patch, call
-import campeonato
 
 
 class TimesTest(TestCase):
