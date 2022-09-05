@@ -1,3 +1,5 @@
+ESPACAMENTO_IMPRESSAO_TABELA = '%-20s%-5s%-5s%-5s%-5s%-5s%-5s%-5s%-5s'
+
 
 class Tabela(object):
     def __init__(self, info_times):
@@ -11,10 +13,10 @@ class Tabela(object):
                           reverse=True)
         print("TABELA DE CLASSIFICAÇÃO")
         # Formatar tabela depois
-        print('%-20s%-5s%-5s%-5s%-5s%-5s%-5s%-5s%-5s' % ('Time', 'P', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'))
+        print(ESPACAMENTO_IMPRESSAO_TABELA % ('Time', 'P', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'))
 
         for time in sorted_time:
-            print('%-20s%-5s%-5s%-5s%-5s%-5s%-5s%-5s%-5s' % (time, self.info_times[time]['pontos'],
+            print(ESPACAMENTO_IMPRESSAO_TABELA % (time, self.info_times[time]['pontos'],
                                      self.info_times[time]['jogos'],
                                      self.info_times[time]['vitorias'],
                                      self.info_times[time]['empates'],
