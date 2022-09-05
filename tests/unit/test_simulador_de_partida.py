@@ -2,7 +2,9 @@ from unittest import TestCase
 from simulador_de_partida import Simulador_de_Partidas
 from unittest.mock import patch
 
+
 class SimuladorDePartidasTest(TestCase):
+
     def test_simular_vitoria_timeA(self):
         """
         Este caso de teste tem como finalidade checar que quando o timeA vence o timeB, as informações
@@ -33,7 +35,6 @@ class SimuladorDePartidasTest(TestCase):
         Sequência:
         [pontosTimeA, vitoriaTimeA, empateTimeA, derrotaTimeA, golsProTimeA, golsContraTimeA, saldoGolsTimeA,
          pontosTimeB, vitoriaTimeB, empateTimeB, derrotaTimeB, golsProTimeB, golsContraTimeB, saldoGolsTimeB]
-
         """
         return_esperado_da_funcao = [0, 0, 0, 1, 1, 2, -1, 3, 1, 0, 0, 2, 1, 1]
         with patch('random.randint') as mocked_random:
@@ -76,9 +77,9 @@ class SimuladorDePartidasTest(TestCase):
                 with patch('builtins.print') as mocked_print:
                     mocked_random.side_effect = (1, 1)
                     mocked_times.return_value = {'América Mineiro': [1, 2],
-                                                'Atlético-PR': [1, 4],
-                                                'Atlético-GO': [1, 3],
-                                                'Atlético-MG': [1, 4]}
+                                                 'Atlético-PR': [1, 4],
+                                                 'Atlético-GO': [1, 3],
+                                                 'Atlético-MG': [1, 4]}
 
                     Simulador_de_Partidas('Atlético-MG', 'América Mineiro').simular()
                     mocked_print.assert_called_with('Atlético-MG 2 x 1 América Mineiro')
@@ -95,9 +96,9 @@ class SimuladorDePartidasTest(TestCase):
                 with patch('builtins.print') as mocked_print:
                     mocked_random.side_effect = (2, 2)
                     mocked_times.return_value = {'América Mineiro': [1, 2],
-                                                'Atlético-PR': [1, 4],
-                                                'Atlético-GO': [1, 3],
-                                                'Atlético-MG': [1, 4]}
+                                                 'Atlético-PR': [1, 4],
+                                                 'Atlético-GO': [1, 3],
+                                                 'Atlético-MG': [1, 4]}
 
                     Simulador_de_Partidas('Atlético-GO', 'Atlético-PR').simular()
                     mocked_print.assert_called_with('Atlético-GO 2 x 3 Atlético-PR')
@@ -112,9 +113,9 @@ class SimuladorDePartidasTest(TestCase):
                 with patch('builtins.print') as mocked_print:
                     mocked_random.side_effect = (2, 2)
                     mocked_times.return_value = {'América Mineiro': [1, 2],
-                                                'Atlético-PR': [1, 4],
-                                                'Atlético-GO': [1, 3],
-                                                'Atlético-MG': [1, 4]}
+                                                 'Atlético-PR': [1, 4],
+                                                 'Atlético-GO': [1, 3],
+                                                 'Atlético-MG': [1, 4]}
 
                     Simulador_de_Partidas('Atlético-MG', 'Atlético-PR').simular()
                     mocked_print.assert_called_with('Atlético-MG 2 x 2 Atlético-PR')
