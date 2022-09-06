@@ -1,7 +1,7 @@
 # simulador_campeonato_brasileiro
-(em progresso ...)
 
-Este simulador será desenvolvido para quem gosta de simular pontuações de partidas e ver como elas afetam a posição dos times em um campeonato. 
+
+Este simulador foi desenvolvido para quem gosta de simular pontuações de partidas e ver como elas afetam a posição dos times em um campeonato. 
 Neste jogo, o usuário pode selecionar 20 times da série A ou série B do campeonato brasileiro.
 
 O campeonato é composto por 20 times, e eles se enfrentarão duas vezes (em casa e fora), resultando em 38 rodadas. 
@@ -21,3 +21,6 @@ Em caso de times com todos os critérios mencionados iguais, o critério de dese
 Após cada rodada, a tabela de classificação mudará de acordo com as pontuações, e o usuário poderá consultá-la após cada rodada simulada. 
 
 O time que terminar em 1º lugar na tabela de classificação após as 38 rodadas é o vencedor.
+
+# Testes
+Com o código desenvolvido, testes unitários e testes de sistema estão sendo criados com a finalidade de garantir a qualidade do código desenvolvido e verificar se atende aos requisitos.
