@@ -16,7 +16,7 @@ Com essas informações, será gerada uma tabela de classificação.
 A ordem das equipes na tabela de classificação seguirá a prioridade de: 
     1 - Mais pontos / 2 - Mais vitórias / 3 - Mais saldo de gols / 4 - Mais gols feitos. 
 
-Em caso de times com todos os critérios mencionados iguais, o critério de desempate será por ordem alfabética. 
+Em caso de times com todos os critérios mencionados iguais, o critério de desempate será por ordem alfabética (na primeira rodada), e nas rodadas seguintes, quem já estava na frente da tabela manterá a vantagem. 
 
 Após cada rodada, a tabela de classificação mudará de acordo com as pontuações, e o usuário poderá consultá-la após cada rodada simulada. 
 
