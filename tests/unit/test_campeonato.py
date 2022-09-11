@@ -1,5 +1,6 @@
 from unittest import TestCase
 from campeonato import Campeonato, relacao_de_times_e_rodadas
+from unittest.mock import patch
 
 
 class CampeonatoTest(TestCase):
@@ -102,7 +103,13 @@ class CampeonatoTest(TestCase):
         self.assertDictEqual(relacao_de_times_e_rodadas_esperado, relacao_de_times_e_rodadas)
 
     def test_criar_tabela_de_classificacao(self):
-        pass
+        """
+        Este caso de teste tem como finalidade checar que quando a função criar_tabela_de_classificacao é chamada,
+        a função imprimir_tabela da classe Tabela será chamada com a informação de qual rodade é atualmente.
+        """
+        with patch('tabela.Tabela.imprimir_tabela') as mocked_imprimir_tabela:
+            Campeonato({}).criar_tabela_de_classificacao(5)
+            mocked_imprimir_tabela.assert_called_with(5)
 
     def test_rodadas(self):
         pass
