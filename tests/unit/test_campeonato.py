@@ -1,5 +1,5 @@
 from unittest import TestCase
-from campeonato import Campeonato
+from campeonato import Campeonato, relacao_de_times_e_rodadas
 
 
 class CampeonatoTest(TestCase):
@@ -42,8 +42,64 @@ class CampeonatoTest(TestCase):
 
         self.assertDictEqual(info_times_test, info_times_test_esperado)
 
-    def test_gerador_de_partidas_proxima_rodada(self):
-        pass
+    def test_gerador_de_partidas_proxima_rodada_primeira(self):
+        """
+        Este caso de teste tem como finalidade checar que quando a função gerador_de_partidas_proxima_rodada
+        é chamada na primeira rodada o python dictionary criado com as informações iniciais sobre a relação
+        de times e partidas não é alterado.
+        """
+        relacao_de_times_e_rodadas_test = relacao_de_times_e_rodadas
+        Campeonato({}).gerador_de_partidas_da_proxima_rodada(0)
+
+        self.assertDictEqual(relacao_de_times_e_rodadas_test, relacao_de_times_e_rodadas)
+
+    def test_gerador_de_partidas_proxima_rodada_val0_equals_1(self):
+        """
+        Este caso de teste tem como finalidade checar que quando a função gerador_de_partidas_proxima_rodada
+        é chamada em outra rodada que nao seja a primeira, o python dictionary criado com as informações iniciais
+        sobre a relação de times e partidas é alterado, onde que se um dos valores é 1 este será substituído por
+        19 e os outros valores diferentes de 1, serão subtraídos por 1. Desta forma, [1, 18] é atualizado para
+        [19, 17].
+        """
+        relacao_de_times_e_rodadas_esperado = {
+            '1': [0, 18],
+            '2': [19, 17],
+            '3': [1, 16],
+            '4': [2, 15],
+            '5': [3, 14],
+            '6': [4, 13],
+            '7': [5, 12],
+            '8': [6, 11],
+            '9': [7, 10],
+            '10': [8, 9]
+        }
+        Campeonato({}).gerador_de_partidas_da_proxima_rodada(1)
+
+        self.assertDictEqual(relacao_de_times_e_rodadas_esperado, relacao_de_times_e_rodadas)
+
+    def test_gerador_de_partidas_proxima_rodada_val1_equals_1(self):
+        """
+        Este caso de teste tem como finalidade checar que quando a função gerador_de_partidas_proxima_rodada
+        é chamada após 10 rodadas o value de index 1 será igual a 1 e assim o python dictionary será também
+        modificado onde este valor será substituído por 19, enquanto os outros serão subtraídos por 1.
+        Desta forma, [19, 1] é atualizado para [18, 19].
+        """
+        relacao_de_times_e_rodadas_esperado = {
+            '1': [0, 9],
+            '2': [10, 8],
+            '3': [11, 7],
+            '4': [12, 6],
+            '5': [13, 5],
+            '6': [14, 4],
+            '7': [15, 3],
+            '8': [16, 2],
+            '9': [17, 1],
+            '10': [18, 19]
+        }
+        for i in range(0, 11):
+            Campeonato({}).gerador_de_partidas_da_proxima_rodada(i)
+
+        self.assertDictEqual(relacao_de_times_e_rodadas_esperado, relacao_de_times_e_rodadas)
 
     def test_criar_tabela_de_classificacao(self):
         pass
