@@ -1,6 +1,7 @@
 from unittest import TestCase
 from campeonato import Campeonato, relacao_de_times_e_rodadas
 from unittest.mock import patch
+from times_database import times
 
 
 class CampeonatoTest(TestCase):
@@ -112,4 +113,26 @@ class CampeonatoTest(TestCase):
             mocked_imprimir_tabela.assert_called_with(5)
 
     def test_rodadas(self):
-        pass
+        """
+        Este caso de teste tem como finalidade checar a quantidade de vezes que funções externas são chamadas durante
+        as 38 rodadas. Considerando uma lista de 20 times, é esperado que a função geradora das partidas seja chamada
+        uma vez por rodada; a função simuladora de partida seja chamada 10 vezes por rodada (são 10 partidas a serem
+        simuladas); a função de atualização de informação dos times seja chamada 20 vezes por rodada (são 20 times a
+        terem suas informações atualizadas); e a função geradora da tabela de classificação seja chamada 1 vez por
+        rodada.
+        """
+        lista_de_times = list(times)
+
+        with patch('builtins.print') as mocked_print:
+            with patch('builtins.input', side_effect=[f'{i}' for i in range(0, 38)]):
+                with patch('campeonato.Campeonato.gerador_de_partidas_da_proxima_rodada') as mocked_gerador_partidas:
+                    with patch('simulador_de_partida.Simulador_de_Partidas.simular') as mocked_simulador:
+                        with patch('campeonato.Campeonato.informacao_dos_times') as mocked_info:
+                            with patch('campeonato.Campeonato.criar_tabela_de_classificacao') as mocked_tabela:
+                                Campeonato(lista_de_times).rodadas()
+                                self.assertEqual(mocked_print.call_count, 38)
+                                self.assertEqual(mocked_gerador_partidas.call_count, 38)
+                                self.assertEqual(mocked_simulador.call_count, 380)
+                                self.assertEqual(mocked_info.call_count, 760)
+                                self.assertEqual(mocked_tabela.call_count, 38)
+
