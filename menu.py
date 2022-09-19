@@ -22,6 +22,10 @@ class Menu(object):
         resposta_incorreta = True
         while resposta_incorreta:
             try:
+                opcao_escolhida = int(input("Pressione qualquer número para iniciar simulador ou 0 para encerrar: "))
+                if opcao_escolhida == 0:
+                    print("Até logo!! :)")
+                    break
                 serie = int(input("Escolha qual série do campeonato você quer jogar. Digite '1' para Série A, "
                                   "'2' para Série B: "))
                 if serie == 1 or serie == 2:
