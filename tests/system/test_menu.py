@@ -19,6 +19,7 @@ class MenuTest(TestCase):
             with patch('builtins.print') as mocked_print:
                 mocked_input.side_effect = (5, 5, 0)
                 menu.Menu.menu_inicial(0)
+                self.assertEqual(mocked_print.call_count, 3)
                 self.assertEqual(mocked_print.mock_calls, [call(MENSAGEM_INICIAL),
                                                            call(MENSAGEM_RESPOSTA_INVALIDA),
                                                            call(MENSAGEM_ENCERRANDO_SIMULADOR)])
@@ -33,11 +34,22 @@ class MenuTest(TestCase):
             with patch('builtins.print') as mocked_print:
                 mocked_input.side_effect = ('A', ' ', 0)
                 menu.Menu.menu_inicial(0)
+                self.assertEqual(mocked_print.call_count, 4)
                 self.assertEqual(mocked_print.mock_calls, [call(MENSAGEM_INICIAL),
                                                            call(MENSAGEM_RESPOSTA_INVALIDA_NAO_NUMERICA),
                                                            call(MENSAGEM_RESPOSTA_INVALIDA_NAO_NUMERICA),
                                                            call(MENSAGEM_ENCERRANDO_SIMULADOR)])
 
     def test_menu_inicial_resposta_correta(self):
-        pass
+        """
+        Este caso de test tem como finalidade checar que quando o simulador é iniciado, o menu inicial será
+        chamado e caso o usuário forneça inputs numéricos corretos, conforme esperado, o simulador iniciará
+        corretamente.
+        """
+        with patch('builtins.input') as mocked_input:
+            with patch('builtins.print') as mocked_print:
+                mocked_input.side_effect = (f'{i+1}' for i in range(0, 41))
+                menu.Menu.menu_inicial(0)
+                # seria interessante checar que o simulador finaliza com a mensagem exibindo o campeao
+                self.assertTrue(mocked_print.call_count, 1257)
 
