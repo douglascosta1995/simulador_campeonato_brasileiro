@@ -6,13 +6,12 @@ class Tabela(object):
         self.info_times = info_times
 
     def imprimir_tabela(self, rodada):
-        # teste código para ordenar times por maior pontuação e outro critérios
+        # ordenar times baseados nos critérios de maior importância
         sorted_time = sorted(self.info_times,
                           key=lambda x: (self.info_times[x]['pontos'], self.info_times[x]['vitorias'],
                                          self.info_times[x]['saldo_de_gols'], self.info_times[x]['gols_pro']),
                           reverse=True)
         print("TABELA DE CLASSIFICAÇÃO")
-        # Formatar tabela depois
         print(ESPACAMENTO_IMPRESSAO_TABELA % ('Time', 'P', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'))
 
         for time in sorted_time:
